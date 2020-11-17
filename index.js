@@ -5,6 +5,7 @@ const rutasClientes = require('./rutas/cliente')
 const rutasFacturas = require('./rutas/factura')
 const rutasProductos = require('./rutas/producto')
 const rutasUsuarios = require('./rutas/usuario')
+const {PORT} = require('./config')
 
 require('./baseDeDatos')
 
@@ -17,6 +18,6 @@ app.use('/api/usuarios', rutasUsuarios)
 app.use('/imagenes', express.static('imagenes'))
 
 
-app.listen(3000, () => {
-  console.log('¡El servidor ha sido encendido!')
+app.listen(PORT, () => {
+  console.log(`Aplicacion corriendo en http://localhost:${PORT}`)
 })
