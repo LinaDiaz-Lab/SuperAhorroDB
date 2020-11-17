@@ -1,5 +1,4 @@
 const producto = require('../modelos/producto');
-//const {crearToken} = require('../utilidades/autenticacion');
 
 var controller = {
 

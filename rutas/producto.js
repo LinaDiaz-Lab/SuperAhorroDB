@@ -6,7 +6,7 @@ const multer = require('multer')
 const middleImagenes = multer({ dest: 'imagenes/' })
 
 
-enrutador.get('/list',controladorproducto.list)
+enrutador.get('/list',middleAuthorization,controladorproducto.list)
 enrutador.post('/create',middleAuthorization,middleImagenes.single('urlImg'),controladorproducto.create)
 enrutador.get('/find/:id',controladorproducto.find)
 enrutador.put('/update/:id',middleAuthorization,controladorproducto.update)
