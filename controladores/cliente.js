@@ -1,5 +1,6 @@
 const cliente = require('../modelos/cliente');
 const { crearToken } = require('../utilidades/autenticacionCliente');
+const bcrypt = require('bcryptjs');
 
 var controller = {
 
@@ -9,12 +10,17 @@ var controller = {
     },
     create: (req, res) =>{
         var params = req.body;
+
+        req.body.contrasena = bcrypt.hashSync(req.body.contrasena);
+
         const nuevoCliente = new cliente(params)
         nuevoCliente.save((error, clienteRegistrado) => {
 
             if (error !== null) {
                 res.status(500).send({ error: 'No pudimos almacenar el cliente', detalle: error })
             } else {
+                let cliente = clienteRegistrado.toObject()
+                delete cliente.contrasena
                 res.status(200).send(clienteRegistrado)
             }
 
@@ -61,12 +67,11 @@ var controller = {
     },
     autenticacion:(req, res) => {
             cliente.findOne({
-              usuario: req.body.usuario,
-              contrasena: req.body.contrasena
+              usuario: req.body.usuario
             }, (error, cliente) => {
               if (error) {
                 res.status(500).send(error)
-              } else if (cliente) { // Si el cliente es encontrado, deberíamos devolver la llave
+              } else if (cliente && bcrypt.compareSync(req.body.contrasena, user.contrasena) ) { // Si el cliente es encontrado, deberíamos devolver la llave
                 res.send({ jwt: crearToken(cliente) })
               } else { // Cuando el cliente esta vacio, es decir, cuando no se encontró
                 res.status(401).send({ error: 'El correo o contraseña no son validos' })

@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
+const cors = require('cors')
 const rutasClientes = require('./rutas/cliente')
 const rutasFacturas = require('./rutas/factura')
 const rutasProductos = require('./rutas/producto')
@@ -9,6 +10,7 @@ const {PORT} = require('./config')
 
 require('./baseDeDatos')
 
+app.use(cors())
 app.use(bodyParser.json())
 
 app.use('/api/clientes', rutasClientes)
