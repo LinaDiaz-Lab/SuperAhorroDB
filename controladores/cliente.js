@@ -71,10 +71,10 @@ var controller = {
             }, (error, cliente) => {
               if (error) {
                 res.status(500).send(error)
-              } else if (cliente && bcrypt.compareSync(req.body.contrasena, user.contrasena) ) { // Si el cliente es encontrado, deberíamos devolver la llave
+              } else if (cliente && bcrypt.compareSync(req.body.contrasena, cliente.contrasena) ) { // Si el cliente es encontrado, deberíamos devolver la llave
                 res.send({ jwt: crearToken(cliente) })
               } else { // Cuando el cliente esta vacio, es decir, cuando no se encontró
-                res.status(401).send({ error: 'El correo o contraseña no son validos' })
+                res.status(401).send({ error: 'El usuario o contraseña no son validos' })
               }
             })
     }

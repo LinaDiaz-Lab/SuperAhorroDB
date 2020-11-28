@@ -22,6 +22,6 @@ app.use('/api/usuarios', rutasUsuarios)
 app.use('/imagenes', express.static('imagenes'))
 
 
-app.listen(PORT, () => {
-  console.log(`Aplicacion corriendo en http://localhost:${PORT}`)
+app.listen(3000, () => {
+  console.log(`Aplicacion corriendo en http://localhost:3000`)
 })
