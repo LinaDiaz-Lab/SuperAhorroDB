@@ -9,6 +9,7 @@ var controller = {
        return res.status(200).send("Método de Prueba controlador Cliente");
     },
     create: (req, res) =>{
+        
         var params = req.body;
 
         req.body.contrasena = bcrypt.hashSync(req.body.contrasena);
