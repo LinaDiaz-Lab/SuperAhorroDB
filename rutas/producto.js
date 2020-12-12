@@ -7,7 +7,7 @@ const middleImagenes = multer({ dest: 'imagenes/' })
 
 
 enrutador.get('/list',controladorproducto.list)
-enrutador.post('/create',middleImagenes.single('urlImg'),controladorproducto.create)
+enrutador.post('/create',middleImagenes.single('urlImg'),controladorproducto.create)//colocar autorizacion
 enrutador.get('/find/:id',controladorproducto.find)
 enrutador.put('/update/:id',middleAuthorization,controladorproducto.update)
 enrutador.delete('/delete/:id',middleAuthorization,controladorproducto.delete)
