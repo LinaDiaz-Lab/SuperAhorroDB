@@ -19,6 +19,7 @@ app.use('/api/clientes', rutasClientes)
 app.use('/api/facturas', rutasFacturas)
 app.use('/api/productos', rutasProductos)
 app.use('/api/usuarios', rutasUsuarios)
+
 app.use('/imagenes', express.static('imagenes'))
 
 

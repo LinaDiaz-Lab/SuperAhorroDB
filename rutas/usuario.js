@@ -4,7 +4,7 @@ const controladorUsuario = require('../controladores/usuario')
 const {middleAuthorization} = require('../utilidades/autenticacionUsuario')
 
 
-enrutador.get('/list',middleAuthorization,controladorUsuario.list)
+enrutador.get('/list',controladorUsuario.list)
 enrutador.post('/create',controladorUsuario.create)
 enrutador.get('/find/:id',middleAuthorization,controladorUsuario.find)
 enrutador.put('/update/:id',middleAuthorization,controladorUsuario.update)

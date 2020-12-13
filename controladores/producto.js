@@ -9,9 +9,7 @@ var controller = {
     create: (req, res) =>{
         var params = req.body;
         const nuevoproducto = new producto(params)
-
-        nuevoproducto.urlImg = `${req.protocol}://${req.get('host')}/${req.file.destination}${req.file.filename}`
-
+        //nuevoproducto.urlImg = `${req.protocol}://${req.get('host')}/${req.file.destination}${req.file.filename}`
         nuevoproducto.save((error, productoRegistrado) => {
             if (error !== null) {
                 res.status(500).send({ error: 'No pudimos almacenar el producto', detalle: error })
