@@ -11,6 +11,6 @@ enrutador.get('/list',controladorproducto.list)
 enrutador.post('/create', middleImagenes.single('urlImg'),subirImagenADropbox, controladorproducto.create)//colocar autorizacion
 enrutador.get('/find/:id',controladorproducto.find)
 enrutador.put('/update/:id',middleAuthorization, subirImagenADropbox, controladorproducto.update)
-enrutador.delete('/delete/:id',middleAuthorization,controladorproducto.delete)
+enrutador.delete('/delete/:id',controladorproducto.delete)//colocar autorizacion
 
 module.exports = enrutador
