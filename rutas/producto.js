@@ -8,9 +8,9 @@ const subirImagenADropbox = require('../middleware/subirImagenADropbox')
 
 
 enrutador.get('/list',controladorproducto.list)
-enrutador.post('/create', middleImagenes.single('urlImg'),subirImagenADropbox, controladorproducto.create)//colocar autorizacion
+enrutador.post('/create',middleAuthorization, middleImagenes.single('urlImg'),subirImagenADropbox, controladorproducto.create)
 enrutador.get('/find/:id',controladorproducto.find)
-enrutador.put('/update/:id', subirImagenADropbox, controladorproducto.update)//colocar autorizacion
+enrutador.put('/update/:id',middleAuthorization, subirImagenADropbox, controladorproducto.update)
 enrutador.delete('/delete/:id',middleAuthorization,controladorproducto.delete)
 
 module.exports = enrutador
